@@ -1,0 +1,14 @@
+{
+   "location":{
+      "lattitude":"40.773478",
+      "longtitude":"50.668900"
+   },
+   "stone_details":{
+      "isArtifact":true,
+      "mineralType":"Chert",
+      "roughRelativeDating":"NeolithicEra",
+      "makingTechnique":"BladeTechnique",
+      "type":"Blade",
+      "functionalDescription":"This stone tool is a Blade. This tool was used to stripping flesh from hunted animals or to shape other tools such as woods and bones."
+   }
+}
