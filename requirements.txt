@@ -1,2 +1,3 @@
 opencv-python==4.5.4.60
 pillow==9.2.0
+keras
