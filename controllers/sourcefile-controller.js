@@ -64,22 +64,20 @@ const addSourceFile = async (req, res, next) => {
                 args: [link]
               };
 
-              // PythonShell.run('model.py', options, function (err, results) {
-              //   if (err) 
-              //     throw err;
-              //   // Results is an array consisting of messages collected during execution
-              //   console.log('results:', results.toString());
-              //   // res.send(results.toString());
-              // });
-
-
             } catch (err) {
               console.log(err);
             }
             if (!sourcefile) {
               return res.status(404).json({ message: "file not uploaded" });
             }
-            res.status(201).json({ sourcefile });
+            PythonShell.run('model.py', options, function (err, results) {
+              if (err) 
+                throw err;
+              // Results is an array consisting of messages collected during execution
+              console.log(results.toString());
+              res.status(201).json(results.toString());
+              // res.send(results.toString());
+            });
 
             // console.log(link);
           })
