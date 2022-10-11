@@ -1,4 +1,3 @@
 opencv-python==4.5.4.60
 keras
 pillow==9.2.0
-tensorflow
