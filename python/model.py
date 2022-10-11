@@ -5,6 +5,14 @@ import requests
 import sys
 import json
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # or any {'0', '1', '2'}
+def warn(*args, **kwargs):
+    pass
+
+import warnings
+warnings.filterwarnings('ignore', category = DeprecationWarning)
+warnings.filterwarnings('ignore', category = FutureWarning)
 
 def predictOut(h5Model,lblTxtFile):
     # Load the model
@@ -46,11 +54,6 @@ def predictOut(h5Model,lblTxtFile):
 
 def predict():
     if int(predictOut('python/models/artifact_keras_model.h5','python/models/artifact_labels.txt'))==1:
-        # json_data='{"stone_details":{"isArtifact":true,\
-        #     "mineralType": "'+predictOut('python/models/mineral_type_keras_model.h5','python/models/mineral_type_labels.txt')+'",\
-        #     "makingTechnique":"'+predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt')+'",\
-        #     "functionalDescription":"'+predictOut('python/models/functional_value_keras_model.h5','python/models/functional_value_labels.txt')+'"}\
-        #     }'
         json_data='{"stone_details":{"isArtifact":true,\
             "mineralType": "'+predictOut('python/models/mineral_type_keras_model.h5','python/models/mineral_type_labels.txt')+'",\
             "makingTechnique":"'+predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt')+'",\
@@ -64,4 +67,4 @@ def predict():
         return('{"stone_details":{"isArtifact":false}','}')
 
 # call predict function
-predict()
+print(predict())
