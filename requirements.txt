@@ -1,4 +1,4 @@
 opencv-python==4.5.4.60
 keras==2.7.0
 pillow==9.2.0
-python-3.6.5
+python==3.6.5
