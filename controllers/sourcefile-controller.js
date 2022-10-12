@@ -73,9 +73,8 @@ const addSourceFile = async (req, res, next) => {
             PythonShell.run('model.py', options, function (err, results) {
               if (err) 
                 throw err;
-              // Results is an array consisting of messages collected during execution
-              console.log(results.toString());
-              res.status(201).json(results.toString());
+              console.log(results);
+              res.status(201).json(results);
               // res.send(results.toString());
             });
 
