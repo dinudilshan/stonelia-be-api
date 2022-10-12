@@ -73,9 +73,9 @@ const addSourceFile = async (req, res, next) => {
             PythonShell.run('model.py', options, function (err, results) {
               if (err) 
                 throw err;
-              console.log(results);
-              res.status(201).json(results);
-              // res.send(results.toString());
+              // console.log(results);
+              // res.status(201).json(results);
+              res.status(201).json({results});
             });
 
             // console.log(link);

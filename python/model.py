@@ -67,16 +67,7 @@ def getRRD(makingTechnique):
 def predict():
     if int(predictOut('python/models/artifact_keras_model.h5','python/models/artifact_labels.txt'))==1:
         # json_data='{"source_link":"'+sys.argv[1]+'","stone_details":{"isArtifact":true,"mineralType": "'+predictOut('python/models/mineral_type_keras_model.h5','python/models/mineral_type_labels.txt')+'","makingTechnique":"'+predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt')+'","functionalDescription":"'+predictOut('python/models/functional_value_keras_model.h5','python/models/functional_value_labels.txt')+'"}}'
-        json_data={
-                    "source_link":sys.argv[1],
-                    "stone_details": {
-                        "isArtifact":True,
-                        "mineralType":predictOut('python/models/mineral_type_keras_model.h5','python/models/mineral_type_labels.txt'),
-                        "makingTechnique":predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt'),
-                        "roughRelativeDating":getRRD(predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt')),
-                        "functionalDescription":predictOut('python/models/functional_value_keras_model.h5','python/models/functional_value_labels.txt')
-                        }
-                    }
+        json_data={"source_link":sys.argv[1],"stone_details": {"isArtifact":True,"mineralType":predictOut('python/models/mineral_type_keras_model.h5','python/models/mineral_type_labels.txt'),"makingTechnique":predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt'),"roughRelativeDating":getRRD(predictOut('python/models/making_tech_keras_model.h5','python/models/making_tech_labels.txt')),"functionalDescription":predictOut('python/models/functional_value_keras_model.h5','python/models/functional_value_labels.txt')}}
         # formated_json=json_data.strip()
         # json_object = json.loads(json_data)
         json_formatted_str = json.dumps(json_data)
@@ -85,4 +76,4 @@ def predict():
         return('{"stone_details":{"isArtifact":false}','}')
 
 # call predict function
-print(predict())
+print(str(predict()))
